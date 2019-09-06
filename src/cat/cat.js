@@ -1,5 +1,5 @@
 import React from 'react';
-import config from '../config'
+//import config from '../config'
 import './cat.css'
 
 
@@ -7,16 +7,10 @@ class Cat extends React.Component {
   
    
   adoptCat = e => {
-    console.log('adopt cat ran')
     e.preventDefault();
     this.props.fetchCat();
 
   }
-
-
-
-
-
 
   render() {
     const {cat} = this.props;

@@ -3,6 +3,7 @@ import config from '../config'
 import './adopt.css'
 import Dog from '../dog/dog'
 import Cat from '../cat/cat'
+import Queue from '../queue'
 
 
 class Adopt extends React.Component {
@@ -12,9 +13,34 @@ class Adopt extends React.Component {
   }
 
   componentDidMount() {
-  
     this.fetchCat();
     this.fetchDog();
+    this.customersInLine();
+  }
+
+  customersInLine = () => {
+    let customers = new Queue();
+    setInterval(() => {
+      customers.enqueue(Math.floor(Math.random()*5))
+      let firstInLine = customers.dequeue();
+      if(firstInLine === 1 ){
+        console.log('adopt cat');
+        this.fetchCat();
+      }
+      if(firstInLine === 2){
+        console.log('adopt a dog');
+        this.fetchDog();
+      }
+      if(firstInLine === 3){
+        console.log('adopt both')
+        this.fetchCat();
+        this.fetchDog();
+      }
+      if(firstInLine > 3){
+        console.log(`doesn't adopt goes to end of line`)
+        customers.enqueue(firstInLine);
+      }
+    }, 3000)
   }
 
   fetchCat = () => {

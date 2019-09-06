@@ -1,5 +1,5 @@
 import React from 'react';
-import config from '../config'
+//import config from '../config'
 import './dog.css'
 
 
@@ -8,14 +8,8 @@ class Dog extends React.Component {
    
   adoptDog = e => {
     e.preventDefault();
-    console.log('adopt dog ran')
     this.props.fetchDog();
   }
-
-
-
-
-
 
   render() {
     const {dog} = this.props;
