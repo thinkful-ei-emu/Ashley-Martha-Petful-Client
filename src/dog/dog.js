@@ -4,7 +4,7 @@ import './dog.css'
 
 
 class Dog extends React.Component {
-  
+  //need to display no dogs left if none left in queue
    
   adoptDog = e => {
     e.preventDefault();
