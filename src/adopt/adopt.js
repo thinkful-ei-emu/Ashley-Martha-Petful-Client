@@ -4,12 +4,13 @@ import './adopt.css'
 import Dog from '../dog/dog'
 import Cat from '../cat/cat'
 import Queue from '../queue'
+import { Link } from 'react-router-dom';
 
 
 class Adopt extends React.Component {
   state = {
     cat: {},
-    dog: {},
+    dog: {},    
     customers: new Queue()    
   }
 
@@ -84,6 +85,36 @@ class Adopt extends React.Component {
         console.error({ error });
       });
   }
+  fetchAdoptDog = () =>  {
+    return fetch(`${config.API_ENDPOINT}/adopt/dog`, {
+    }).then((dogRes) => {
+      if (!dogRes.ok) {
+        return dogRes.json().then(e => Promise.reject(e));
+      }
+      
+      return dogRes.json()
+    })
+      
+      .catch(error => {
+        console.error({ error });
+      });
+  }
+  fetchAdoptCat = () =>  {
+    return fetch(`${config.API_ENDPOINT}/adopt/cat`, {
+    }).then((catRes) => {
+      if (!catRes.ok) {
+        return catRes.json().then(e => Promise.reject(e));
+      }
+
+      return catRes.json()
+    })
+     
+      .catch(error => {
+        console.error({ error });
+      });
+  }
+
+ 
 
  
 
@@ -93,9 +124,11 @@ class Adopt extends React.Component {
       <div className="adopt">
         <header className="adopt-header"><h1>Adopt</h1></header>
         <div className="animal-container">
-          <Cat cat={cat} fetchCat={this.fetchCat} />
-          <Dog dog={dog} fetchDog={this.fetchDog}/>          
+          <Cat cat={cat} fetchAdoptCat={this.fetchAdoptCat} fetchCat={this.fetchCat}/>
+          <Dog dog={dog} fetchAdoptDog={this.fetchAdoptDog} fetchDog={this.fetchDog}/>
+           <Link to="/adopted" >See who has already been adopted</Link>        
         </div>
+
       </div>
     );
   }
