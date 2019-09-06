@@ -9,7 +9,8 @@ import Queue from '../queue'
 class Adopt extends React.Component {
   state = {
     cat: {},
-    dog: {},    
+    dog: {},
+    customers: new Queue()    
   }
 
   componentDidMount() {
@@ -18,12 +19,16 @@ class Adopt extends React.Component {
     this.customersInLine();
   }
 
+  stopTime = (timer) => {
+    clearInterval(timer);
+  }
+
+
   customersInLine = () => {
-    let customers = new Queue();
-    setInterval(() => {
-      customers.enqueue(Math.floor(Math.random()*5))
-      let firstInLine = customers.dequeue();
-      if(firstInLine === 1 ){
+    let timer = setInterval(() => {
+      this.state.customers.enqueue(1)
+      let firstInLine = this.state.customers.dequeue();
+      if(firstInLine === 6 ){
         console.log('adopt cat');
         this.fetchCat();
       }
@@ -36,17 +41,20 @@ class Adopt extends React.Component {
         this.fetchCat();
         this.fetchDog();
       }
-      if(firstInLine > 3){
+      if(firstInLine > 3 || firstInLine <= 5){
         console.log(`doesn't adopt goes to end of line`)
-        customers.enqueue(firstInLine);
+        this.state.customers.enqueue(firstInLine);
       }
-    }, 3000)
+      if(firstInLine === 1){
+        console.log('real life user');
+        this.stopTime(timer);
+      }
+    }, 5000)
   }
 
   fetchCat = () => {
     return fetch(`${config.API_ENDPOINT}/cat`, {
     }).then((catRes) => {
-      console.log(catRes)
       if (!catRes.ok) {
         return catRes.json().then(e => Promise.reject(e));
       }
@@ -63,7 +71,6 @@ class Adopt extends React.Component {
   fetchDog = () =>  {
     return fetch(`${config.API_ENDPOINT}/dog`, {
     }).then((dogRes) => {
-      console.log(dogRes)
       if (!dogRes.ok) {
         return dogRes.json().then(e => Promise.reject(e));
       }
@@ -92,8 +99,6 @@ class Adopt extends React.Component {
       </div>
     );
   }
-
-
 }
 
 export default Adopt;
