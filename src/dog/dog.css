@@ -1,0 +1,15 @@
+.dog-image-container{
+  width: 75%; 
+  margin: 0 auto; 
+}
+
+
+
+ul{
+  list-style: none;
+}
+
+img{
+  height: auto;
+  width: 100%;
+}
