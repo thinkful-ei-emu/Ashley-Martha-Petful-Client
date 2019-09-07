@@ -13,7 +13,7 @@ API: Node.js, Express
 
 ## API Documentation
 
-Link to API Github Repo: [https://github.com/thinkful-ei-emu/petful-server-A-M/tree/master/petful-server] (https://github.com/thinkful-ei-emu/petful-server-A-M/tree/master/petful-server)
+Link to API Github Repo: [https://github.com/thinkful-ei-emu/petful-server-A-M/tree/master/petful-server](https://github.com/thinkful-ei-emu/petful-server-A-M/tree/master/petful-server)
 
 
 ### `npm start`
