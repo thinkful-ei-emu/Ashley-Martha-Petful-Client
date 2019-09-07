@@ -2,18 +2,16 @@ import React from 'react';
 //import config from '../config'
 import './dog.css'
 
-
 class Dog extends React.Component {
-  
    
   adoptDog = e => {
     e.preventDefault();
     this.props.fetchDog();
+    this.props.customersInLine();
   }
 
   render() {
-    const {dog, place} = this.props;
-    // const {cats, dogs} = this.state
+    const {dog, place, customer, clear, customersInLine} = this.props;
     return (
       <div className="dog">  
          <h2>Adopt a Dog:</h2>
@@ -28,7 +26,7 @@ class Dog extends React.Component {
         <li>Breed: {dog.breed}</li>
         <li>About Me:</li>
         {dog.story}<br></br>
-        {this.props.place === 0 ? <button onClick={this.adoptDog}>Adopt</button> :
+        {this.props.place === 0 && this.props.clear === true ? <button onClick={this.adoptDog}>Adopt</button> :
         <></>}   
         </ul>       
        

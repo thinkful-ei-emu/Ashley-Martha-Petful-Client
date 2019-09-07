@@ -9,11 +9,12 @@ class Cat extends React.Component {
   adoptCat = e => {
     e.preventDefault();
     this.props.fetchCat();
+    this.props.customersInLine();
   }
   
 
   render() {
-    const {cat, place} = this.props;
+    const {cat, place, clear, customers, customersInLine} = this.props;
     
     return (
       <div className="cat">  
@@ -29,7 +30,7 @@ class Cat extends React.Component {
         <li>Breed: {cat.breed}</li>
         <li>About Me:</li>
         {cat.story}<br></br>   
-        {this.props.place === 0 
+        {this.props.place === 0 && this.props.clear === true
         ? <button onClick={this.adoptCat}>Adopt</button> 
         : <> </>}
         </ul>      
