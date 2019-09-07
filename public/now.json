@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "alias": "ashley-martha-petful-client",
-  "name": "bookmarks-app",
+  "alias": "am-petful-client",
+  "name": "ashley-martha-petful-client",
   "routes": [
       {
         "src": "^/static/(.*)",
