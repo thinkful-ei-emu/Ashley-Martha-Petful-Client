@@ -12,8 +12,7 @@ class Animal extends React.Component {
     
     
       return (
-        <div className="animal">  
-     
+        <div className="animal">       
                 
           <h3>{animal.name}</h3> 
           <div className="animal-image-container">
@@ -24,8 +23,7 @@ class Animal extends React.Component {
           <p>Age: {animal.age}</p>
           <p>Breed: {animal.breed}</p>
           <p>About Me:</p>      
-          {animal.story}
-          
+          {animal.story}          
         </div>
       );
 

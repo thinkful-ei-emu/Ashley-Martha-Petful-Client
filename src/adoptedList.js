@@ -23,17 +23,9 @@ class AdoptedList extends React.Component {
       return animalsRes.json()
     })
       .then((animals) => {
-        console.log(animals)
-        
-        let firstAnim = [...Object.values(animals.first)][0]
-        console.log(Object.values(animals.first.next))
-        let filterArr = Object.values(animals.first.next).filter(animal => animal !== null)
-        let animArr = [...filterArr, firstAnim]
-        console.log(animArr)
-        
-
+      
         this.setState({
-           animals: animArr 
+           animals: animals
           });
       })
       .catch(error => {
@@ -53,8 +45,7 @@ class AdoptedList extends React.Component {
     return (
       <div className="adopted">
         <ul>
-      {animals.map((animal, index) => (
-        
+      {animals.map((animal, index) => (        
         <li key={index}><Animal animal={animal}/> </li>   
        ))}
        </ul>
