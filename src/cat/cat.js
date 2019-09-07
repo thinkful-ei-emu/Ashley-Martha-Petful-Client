@@ -4,10 +4,11 @@ import './cat.css'
 
 
 class Cat extends React.Component {
-  
-   
+  //need to display no cats left if none left in queue
+
   adoptCat = e => {
     e.preventDefault();
+    this.props.fetchAdoptCat();
     this.props.fetchCat();
     this.props.customersInLine();
   }
@@ -36,6 +37,9 @@ class Cat extends React.Component {
         </ul>      
       </div>
     );
+
+
+
   }
 
 

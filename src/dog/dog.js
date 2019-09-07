@@ -6,6 +6,7 @@ class Dog extends React.Component {
    
   adoptDog = e => {
     e.preventDefault();
+    this.props.fetchAdoptDog();
     this.props.fetchDog();
     this.props.customersInLine();
   }

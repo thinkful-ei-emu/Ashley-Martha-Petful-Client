@@ -4,6 +4,7 @@ import './adopt.css'
 import Dog from '../dog/dog'
 import Cat from '../cat/cat'
 import Queue from '../queue'
+import { Link } from 'react-router-dom';
 
 
 class Adopt extends React.Component {
@@ -12,8 +13,10 @@ class Adopt extends React.Component {
     dog: {},
     customers: new Queue(), 
     place: this.placeInLine,
-    clear: false
-    }
+    clear: false,   
+    dogError: null,
+    catError: null    
+  }
 
   componentDidMount() {
     this.fetchCat();
@@ -82,7 +85,7 @@ class Adopt extends React.Component {
     }, 2000)
   }
 
-  fetchCat = () => {
+  fetchCat = () => {   
     return fetch(`${config.API_ENDPOINT}/cat`, {
     }).then((catRes) => {
       if (!catRes.ok) {
@@ -91,13 +94,14 @@ class Adopt extends React.Component {
       return catRes.json()
     })
       .then((cat) => {
-        this.setState({ cat });
+        this.setState({ cat: cat });
       })
-      .catch(error => {
-        console.error({ error });
+      .catch(res => {
+        console.log(res)
+        this.setState({ catError: res.error.message });
       });
   }
-  fetchDog = () =>  {
+  fetchDog = () =>  {   
     return fetch(`${config.API_ENDPOINT}/dog`, {
     }).then((dogRes) => {
       if (!dogRes.ok) {
@@ -106,22 +110,56 @@ class Adopt extends React.Component {
       return dogRes.json()
     })
       .then((dog) => {
-        this.setState({ dog });
+        this.setState({ dog: dog });
       })
+      .catch(res => {
+        this.setState({ dogError: res.error.message });
+      });
+  }
+  fetchAdoptDog = () =>  {
+    return fetch(`${config.API_ENDPOINT}/adopt/dog`, {
+    }).then((dogRes) => {
+      if (!dogRes.ok) {
+        return dogRes.json().then(e => Promise.reject(e));
+      }
+      
+      return dogRes.json()
+    })
+      
+      .catch(error => {
+        console.error({ error });
+      });
+  }
+  fetchAdoptCat = () =>  {
+    return fetch(`${config.API_ENDPOINT}/adopt/cat`, {
+    }).then((catRes) => {
+      if (!catRes.ok) {
+        return catRes.json().then(e => Promise.reject(e));
+      }
+
+      return catRes.json()
+    })
+     
       .catch(error => {
         console.error({ error });
       });
   }
 
+ 
+
   render() {
-    const { cat, dog } = this.state;    
+    const { cat, dog, catError, dogError } = this.state;    
     return (
       <div className="adopt">
         <header className="adopt-header"><h1>Adopt</h1></header>
         {this.state.place === 0 
         ? <h4>It's now your turn.</h4> 
         : <h4>There are now {this.state.place} pet lovers in front of you in line.</h4> }
-        <div className="animal-container">
+       
+        <div className="animal-container">{
+          catError !== null?   <div className="error-message" role="alert">
+          {catError && <p className="red">{catError}</p>}
+          </div> :   
           <Cat 
           cat={cat} 
           place={this.state.place} 
@@ -129,14 +167,23 @@ class Adopt extends React.Component {
           customers={this.state.customers}
           customersInLine={this.customersInLine}
           fetchCat={this.fetchCat}/>
-          <Dog 
-          dog={dog} 
-          place={this.state.place} 
-          clear={this.state.clear}
-          customers={this.state.customers}
-          customersInLine={this.customersInLine}
-          fetchDog={this.fetchDog}/>          
+        }
+         {
+          dogError !== null?   <div className="error-message" role="alert">
+          {dogError && <p className="red">{dogError}</p>}
+          </div> :   
+           <Dog 
+           dog={dog} 
+           place={this.state.place} 
+           clear={this.state.clear}
+           customers={this.state.customers}
+           customersInLine={this.customersInLine}
+           fetchDog={this.fetchDog}/>    
+        }
+          
+           <Link to="/adopted" >See who has already been adopted</Link>        
         </div>
+
       </div>
     );
   }
