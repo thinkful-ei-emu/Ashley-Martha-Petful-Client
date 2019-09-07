@@ -12,7 +12,7 @@ class Dog extends React.Component {
   }
 
   render() {
-    const {dog} = this.props;
+    const {dog, place} = this.props;
     // const {cats, dogs} = this.state
     return (
       <div className="dog">  
@@ -28,7 +28,8 @@ class Dog extends React.Component {
         <li>Breed: {dog.breed}</li>
         <li>About Me:</li>
         {dog.story}<br></br>
-        <button onClick={this.adoptDog}>Adopt</button>    
+        {this.props.place === 0 ? <button onClick={this.adoptDog}>Adopt</button> :
+        <></>}   
         </ul>       
        
         

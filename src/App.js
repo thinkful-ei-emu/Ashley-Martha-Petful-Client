@@ -6,12 +6,6 @@ import Adopt from './adopt/adopt'
 
 class App extends React.Component {
 
-
-
-
-
-
-  
   render() {
     return (
       <div className="App">
@@ -23,8 +17,6 @@ class App extends React.Component {
       </div>
     );
   }
-
-
 }
 
 export default App;
