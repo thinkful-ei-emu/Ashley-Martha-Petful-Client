@@ -1,7 +1,5 @@
 import React from 'react';
-
-
-
+import './animal.css'
 
 class Animal extends React.Component {
    //need to display no cats left if none left in queue

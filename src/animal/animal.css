@@ -1,0 +1,11 @@
+.animal-image-container{
+  width: 75%; 
+  margin: 0 auto; 
+}
+
+
+
+img{
+  height: auto;
+  width: 100%;
+}

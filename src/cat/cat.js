@@ -15,10 +15,7 @@ class Cat extends React.Component {
 
   render() {
     const {cat} = this.props;
-    if (!cat) {
-      return <p>No more cats left to adopt</p>;
-    }
-    else{
+    
       return (
         <div className="cat">  
            <h2>Adopt a Cat:</h2>
@@ -40,7 +37,7 @@ class Cat extends React.Component {
         </div>
       );
 
-    }
+    
 
   }
 

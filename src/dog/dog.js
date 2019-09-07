@@ -4,8 +4,7 @@ import './dog.css'
 
 
 class Dog extends React.Component {
-  //need to display no dogs left if none left in queue
-   
+     
   adoptDog = e => {
     e.preventDefault();
     this.props.fetchAdoptDog();
@@ -14,11 +13,7 @@ class Dog extends React.Component {
 
   render() {
     const {dog} = this.props;    
-
-    if (!dog) {
-      return <p>No more dogs left to adopt</p>;
-    }
-    else{
+ 
       return (
         <div className="dog">
             
@@ -40,7 +35,7 @@ class Dog extends React.Component {
           
         </div>
       );
-    }
+    
     
   }
 

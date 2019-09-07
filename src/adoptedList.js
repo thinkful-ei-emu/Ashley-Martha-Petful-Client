@@ -1,6 +1,6 @@
 import React from 'react';
 import config from './config'
-import Animal from './animal'
+import Animal from './animal/animal'
 
 class AdoptedList extends React.Component {
   state = {

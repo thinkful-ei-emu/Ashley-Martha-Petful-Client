@@ -11,7 +11,9 @@ class Adopt extends React.Component {
   state = {
     cat: {},
     dog: {},    
-    customers: new Queue()    
+    customers: new Queue(),
+    dogError: null,
+    catError: null    
   }
 
   componentDidMount() {
@@ -53,7 +55,7 @@ class Adopt extends React.Component {
     }, 5000)
   }
 
-  fetchCat = () => {
+  fetchCat = () => {   
     return fetch(`${config.API_ENDPOINT}/cat`, {
     }).then((catRes) => {
       if (!catRes.ok) {
@@ -65,11 +67,12 @@ class Adopt extends React.Component {
       .then((cat) => {
         this.setState({ cat: cat });
       })
-      .catch(error => {
-        console.error({ error });
+      .catch(res => {
+        console.log(res)
+        this.setState({ catError: res.error.message });
       });
   }
-  fetchDog = () =>  {
+  fetchDog = () =>  {   
     return fetch(`${config.API_ENDPOINT}/dog`, {
     }).then((dogRes) => {
       if (!dogRes.ok) {
@@ -81,8 +84,8 @@ class Adopt extends React.Component {
       .then((dog) => {
         this.setState({ dog: dog });
       })
-      .catch(error => {
-        console.error({ error });
+      .catch(res => {
+        this.setState({ dogError: res.error.message });
       });
   }
   fetchAdoptDog = () =>  {
@@ -119,13 +122,24 @@ class Adopt extends React.Component {
  
 
   render() {
-    const { cat, dog } = this.state;    
+    const { cat, dog, catError, dogError } = this.state;    
     return (
       <div className="adopt">
         <header className="adopt-header"><h1>Adopt</h1></header>
-        <div className="animal-container">
-          <Cat cat={cat} fetchAdoptCat={this.fetchAdoptCat} fetchCat={this.fetchCat}/>
-          <Dog dog={dog} fetchAdoptDog={this.fetchAdoptDog} fetchDog={this.fetchDog}/>
+      
+        <div className="animal-container">{
+          catError !== null?   <div className="error-message" role="alert">
+          {catError && <p className="red">{catError}</p>}
+          </div> :   
+          <Cat cat={cat} fetchAdoptCat={this.fetchAdoptCat} fetchCat={this.fetchCat}/>   
+        }
+         {
+          dogError !== null?   <div className="error-message" role="alert">
+          {dogError && <p className="red">{dogError}</p>}
+          </div> :   
+         <Dog dog={dog} fetchAdoptDog={this.fetchAdoptDog} fetchDog={this.fetchDog}/>
+        }
+          
            <Link to="/adopted" >See who has already been adopted</Link>        
         </div>
 
