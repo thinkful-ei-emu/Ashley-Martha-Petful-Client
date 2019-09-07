@@ -6,7 +6,12 @@ Live App: [https://am-petful-client.now.sh/](https://am-petful-client.now.sh/)
 
 Petful is an adoption simulator that allows for you to adopt a pet on a "first come, first served" basis. This means that you must wait until you are first in line to adopt a pet. Similarly, the animals are adopted by the order in which they arrive at FIFO. When it is your turn to adopt, you have a choice of adopting a dog, cat or both animals. Due to our "first-in, first-out" policy, only the animals that have been waiting the longest to be adopted are available for adoption.
 
+## Screenshots
+
+![Homepage](./petful-homepage-screenshot.png?raw=true)
+
 ## Technologies
+
 Front-end: React, HTML, CSS, Javascript
 
 API: Node.js, Express
@@ -55,3 +60,6 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
+## Credits
+
+Created by Ashley Oelbaum and Marth Plantz
