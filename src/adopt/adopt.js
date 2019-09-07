@@ -63,7 +63,7 @@ class Adopt extends React.Component {
       return catRes.json()
     })
       .then((cat) => {
-        this.setState({ cat });
+        this.setState({ cat: cat });
       })
       .catch(error => {
         console.error({ error });
@@ -79,7 +79,7 @@ class Adopt extends React.Component {
       return dogRes.json()
     })
       .then((dog) => {
-        this.setState({ dog });
+        this.setState({ dog: dog });
       })
       .catch(error => {
         console.error({ error });

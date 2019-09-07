@@ -1,34 +1,40 @@
 import React from 'react';
 import config from './config'
-
-
-
-
+import Animal from './animal'
 
 class AdoptedList extends React.Component {
   state = {
-   animals:{}
+    animals: []
   }
 
   componentDidMount() {
     this.fetchAdoptedAnimals();
-    
+
   }
 
- 
-  fetchAdoptedAnimals = () =>  {
+
+  fetchAdoptedAnimals = () => {
     return fetch(`${config.API_ENDPOINT}/animals`, {
     }).then((animalsRes) => {
       if (!animalsRes.ok) {
         return animalsRes.json().then(e => Promise.reject(e));
       }
-      
+
       return animalsRes.json()
     })
       .then((animals) => {
-       
         console.log(animals)
-        this.setState({animals});
+        
+        let firstAnim = [...Object.values(animals.first)][0]
+        console.log(Object.values(animals.first.next))
+        let filterArr = Object.values(animals.first.next).filter(animal => animal !== null)
+        let animArr = [...filterArr, firstAnim]
+        console.log(animArr)
+        
+
+        this.setState({
+           animals: animArr 
+          });
       })
       .catch(error => {
         console.error({ error });
@@ -43,12 +49,16 @@ class AdoptedList extends React.Component {
 
 
   render() {
-    const { animals} = this.state;    
+    const { animals } = this.state;
     return (
       <div className="adopted">
-    
-       
-      <button onClick={this.goBack}>Back</button>
+        <ul>
+      {animals.map((animal, index) => (
+        
+        <li key={index}><Animal animal={animal}/> </li>   
+       ))}
+       </ul>
+        <button onClick={this.goBack}>Back</button>
       </div>
     );
   }
