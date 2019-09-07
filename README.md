@@ -1,8 +1,20 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Petful
 
-## Available Scripts
+Live App: [https://am-petful-client.now.sh/](https://am-petful-client.now.sh/) 
 
-In the project directory, you can run:
+## Summary
+
+Petful is an adoption simulator that allows for you to adopt a pet on a "first come, first served" basis. This means that you must wait until you are first in line to adopt a pet. Similarly, the animals are adopted by the order in which they arrive at FIFO. When it is your turn to adopt, you have a choice of adopting a dog, cat or both animals. Due to our "first-in, first-out" policy, only the animals that have been waiting the longest to be adopted are available for adoption.
+
+## Technologies
+Front-end: React, HTML, CSS, Javascript
+
+API: Node.js, Express
+
+## API Documentation
+
+Link to API Github Repo: [https://github.com/thinkful-ei-emu/petful-server-A-M/tree/master/petful-server] (https://github.com/thinkful-ei-emu/petful-server-A-M/tree/master/petful-server)
+
 
 ### `npm start`
 
@@ -43,26 +55,3 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
