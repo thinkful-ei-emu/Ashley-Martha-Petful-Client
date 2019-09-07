@@ -1,6 +1,7 @@
 import React from 'react';
-import config from './config'
-import Animal from './animal/animal'
+import config from '../config'
+import Animal from '../animal/animal'
+import './adoptedList.css'
 
 class AdoptedList extends React.Component {
   state = {
@@ -9,7 +10,6 @@ class AdoptedList extends React.Component {
 
   componentDidMount() {
     this.fetchAdoptedAnimals();
-
   }
 
 
@@ -46,10 +46,11 @@ class AdoptedList extends React.Component {
       <div className="adopted">
         <ul>
       {animals.map((animal, index) => (        
-        <li key={index}><Animal animal={animal}/> </li>   
+        <li className="adopted-animal" key={index}><Animal animal={animal}/><hr></hr> </li>   
+        
        ))}
        </ul>
-        <button onClick={this.goBack}>Back</button>
+        <button className="back-button" onClick={this.goBack}>Back</button>
       </div>
     );
   }

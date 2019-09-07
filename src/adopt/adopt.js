@@ -24,8 +24,7 @@ class Adopt extends React.Component {
     this.customersInLine();
   }
 
-  stopTime = (timer) => {
-    console.log('clear timer ran')
+  stopTime = (timer) => {    
     clearInterval(timer);
   }
 
@@ -48,8 +47,7 @@ class Adopt extends React.Component {
         if(firstInLine === 1 ){
           this.fetchAdoptCat();
           this.fetchCat();
-          placeInLine--;
-          console.log(placeInLine)
+          placeInLine--;          
           this.setState({
             place: placeInLine
           })
@@ -58,8 +56,6 @@ class Adopt extends React.Component {
           this.fetchAdoptDog();
           this.fetchDog();
           placeInLine--;
-
-          console.log(placeInLine)
           this.setState({
             place: placeInLine
           })
@@ -69,18 +65,14 @@ class Adopt extends React.Component {
           this.fetchAdoptDog();
           this.fetchCat();
           this.fetchDog();
-          placeInLine--;
-
-          console.log(placeInLine)
+          placeInLine--;          
           this.setState({
             place: placeInLine
           })
         }
         if(firstInLine > 3){
           this.state.customers.enqueue(firstInLine);
-          placeInLine--;
-
-          console.log(placeInLine)
+          placeInLine--;        
           this.setState({
             place: placeInLine
           })
@@ -100,8 +92,7 @@ class Adopt extends React.Component {
       .then((cat) => {
         this.setState({ cat: cat });
       })
-      .catch(res => {
-        console.log(res)
+      .catch(res => {      
         this.setState({ catError: res.error.message });
       });
   }
@@ -142,8 +133,7 @@ class Adopt extends React.Component {
       }
 
       return catRes.json()
-    })
-     
+    })     
       .catch(error => {
         console.error({ error });
       });
@@ -156,10 +146,13 @@ class Adopt extends React.Component {
     return (
       <div className="adopt">
         <header className="adopt-header"><h1>Adopt</h1></header>
-        {this.state.place === 0 
-        ? <h4>It's now your turn.</h4> 
-        : <h4>There are now {this.state.place} pet lovers in front of you in line.</h4> }
-       
+        {catError !== null && dogError !== null ?
+        <h4>There are no more animals to adopt. Check again tomorrow.</h4> : 
+         this.state.place === 0 
+          ? <h4>It's now your turn.</h4> 
+          : <h4>There are now {this.state.place} pet lovers in front of you in line.</h4> 
+        }
+        
         <div className="animal-container">{
           catError !== null?   <div className="error-message" role="alert">
           {catError && <p className="red">{catError}</p>}
@@ -189,11 +182,12 @@ class Adopt extends React.Component {
            fetchAdoptDog={this.fetchAdoptDog}
            />
            
-        }
-          
-           <Link to="/adopted" >See who has already been adopted</Link>        
+        }                  
+        </div>         
+      
+        <div>
+          <Link to="/adopted"> See who has already been adopted</Link> 
         </div>
-
       </div>
     );
   }

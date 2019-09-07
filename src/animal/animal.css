@@ -1,9 +1,16 @@
 .animal-image-container{
-  width: 75%; 
+  width: 500px; 
   margin: 0 auto; 
 }
 
-
+p{
+  margin: 7px auto;
+  font-size: 1.2em;
+}
+.animal-description{
+  margin: 5px auto 30px;
+  font-size: 1em;
+}
 
 img{
   height: auto;

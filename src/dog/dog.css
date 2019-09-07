@@ -1,12 +1,14 @@
 .dog-image-container{
-  width: 75%; 
+  width: 500px; 
   margin: 0 auto; 
 }
 
 
-
-ul{
-  list-style: none;
+p{
+  margin: 7px auto;
+}
+.dog-description{
+  margin-bottom: 30px;
 }
 
 img{

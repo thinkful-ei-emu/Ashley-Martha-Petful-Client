@@ -3,7 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import './App.css';
 import Homepage from './homepage'
 import Adopt from './adopt/adopt'
-import AdoptedList from './adoptedList'
+import AdoptedList from './adoptedList/adoptedList'
 
 class App extends React.Component {
 

@@ -3,8 +3,7 @@ import React from 'react';
 import './cat.css'
 
 
-class Cat extends React.Component {
-  //need to display no cats left if none left in queue
+class Cat extends React.Component {  
 
   adoptCat = e => {
     e.preventDefault();
@@ -20,21 +19,21 @@ class Cat extends React.Component {
     return (
       <div className="cat">  
          <h2>Adopt a Cat:</h2>
-         <ul className="cat-container">        
+         <div className="cat-container">        
         <h3>{cat.name}</h3> 
         <div className="cat-image-container">
           <img src={cat.imageURL} alt="cat" />
           </div>        
-        <li>{cat.imageDescription}</li>            
-        <li>Sex: {cat.sex}</li>
-        <li>Age: {cat.age}</li>
-        <li>Breed: {cat.breed}</li>
-        <li>About Me:</li>
-        {cat.story}<br></br>   
+        <p className="cat-description">{cat.imageDescription}</p>            
+        <p>Sex: {cat.sex}</p>
+        <p>Age: {cat.age}</p>
+        <p>Breed: {cat.breed}</p>
+        <p>About Me:</p>
+        <p>{cat.story} </p>  
         {this.props.place === 0 && this.props.clear === true
         ? <button onClick={this.adoptCat}>Adopt</button> 
         : <> </>}
-        </ul>      
+        </div>      
       </div>
     );
 

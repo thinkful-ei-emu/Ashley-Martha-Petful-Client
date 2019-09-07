@@ -1,0 +1,31 @@
+.adopted-animal{
+  margin-bottom: 80px; 
+}
+
+.adopted{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+hr{
+  width: 50%;
+  margin-top: 50px; 
+  height: 3px;
+  background-color: black;
+}
+
+.animal-name{
+  font-size: 2.5em;
+}
+
+.back-button{
+  align-self: center;
+  width: 80px;
+  margin-bottom: 100px;
+  font-size: 1.1em;
+}
+
+ul{
+  padding: 0;
+}

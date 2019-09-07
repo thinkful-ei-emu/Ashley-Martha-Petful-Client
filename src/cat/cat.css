@@ -1,12 +1,13 @@
 .cat-image-container{
-  width: 75%; 
-  margin: 0 auto; 
+  width: 500px; 
+  margin: 0 auto;  
 }
 
-
-
-ul{
-  list-style: none;
+p{
+  margin: 7px auto;
+}
+.cat-description{
+  margin-bottom: 30px;
 }
 
 img{
