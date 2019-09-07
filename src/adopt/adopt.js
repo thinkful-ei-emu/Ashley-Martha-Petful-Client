@@ -78,7 +78,7 @@ class Adopt extends React.Component {
           })
         }
       }
-    }, 2000)
+    }, 10000)
   }
 
   fetchCat = () => {   
@@ -155,7 +155,7 @@ class Adopt extends React.Component {
         
         <div className="animal-container">{
           catError !== null?   <div className="error-message" role="alert">
-          {catError && <p className="red">{catError}</p>}
+          {catError && <p className="red">There are no more cats avaliable.</p>}
           </div> :   
           <Cat 
           cat={cat} 
@@ -170,7 +170,7 @@ class Adopt extends React.Component {
         }
          {
           dogError !== null?   <div className="error-message" role="alert">
-          {dogError && <p className="red">{dogError}</p>}
+          {dogError && <p className="red">There are no more dogs avaliable.</p>}
           </div> :   
            <Dog 
            dog={dog} 
