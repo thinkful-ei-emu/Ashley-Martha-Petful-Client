@@ -46,6 +46,7 @@ class Adopt extends React.Component {
       }
       else{
         if(firstInLine === 1 ){
+          this.fetchAdoptCat();
           this.fetchCat();
           placeInLine--;
           console.log(placeInLine)
@@ -54,6 +55,7 @@ class Adopt extends React.Component {
           })
         }
         if(firstInLine === 2){
+          this.fetchAdoptDog();
           this.fetchDog();
           placeInLine--;
 
@@ -63,6 +65,8 @@ class Adopt extends React.Component {
           })
         }
         if(firstInLine === 3){
+          this.fetchAdoptCat();
+          this.fetchAdoptDog();
           this.fetchCat();
           this.fetchDog();
           placeInLine--;
@@ -166,7 +170,10 @@ class Adopt extends React.Component {
           clear={this.state.clear}
           customers={this.state.customers}
           customersInLine={this.customersInLine}
-          fetchCat={this.fetchCat}/>
+          fetchCat={this.fetchCat} 
+          fetchAdoptCat={this.fetchAdoptCat}
+          />
+         
         }
          {
           dogError !== null?   <div className="error-message" role="alert">
@@ -178,7 +185,10 @@ class Adopt extends React.Component {
            clear={this.state.clear}
            customers={this.state.customers}
            customersInLine={this.customersInLine}
-           fetchDog={this.fetchDog}/>    
+           fetchDog={this.fetchDog}
+           fetchAdoptDog={this.fetchAdoptDog}
+           />
+           
         }
           
            <Link to="/adopted" >See who has already been adopted</Link>        
