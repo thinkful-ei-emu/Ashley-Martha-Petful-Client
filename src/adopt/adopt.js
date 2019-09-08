@@ -78,7 +78,7 @@ class Adopt extends React.Component {
           })
         }
       }
-    }, 10000)
+    }, 3000)
   }
 
   fetchCat = () => {   
@@ -92,7 +92,7 @@ class Adopt extends React.Component {
       .then((cat) => {
         this.setState({ cat: cat });
       })
-      .catch(res => {      
+      .catch(res => {        
         this.setState({ catError: res.error.message });
       });
   }
@@ -108,6 +108,7 @@ class Adopt extends React.Component {
         this.setState({ dog: dog });
       })
       .catch(res => {
+       
         this.setState({ dogError: res.error.message });
       });
   }
